@@ -1,12 +1,10 @@
-# h4-heric-leakage-current-resonance
+# H4-heric-leakage-current-resonance
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23790672.svg)](https://doi.org/10.5281/zenodo.23790672)
 
 **Simulink models, sweep data and analysis scripts for: "Switching-frequency-dependent leakage current in H4 and HERIC transformerless PV inverters: a common-mode resonance perspective"**
 
 Transformerless single-phase PV inverters have no galvanic isolation, so the switching common-mode voltage can drive a leakage current through the parasitic capacitance between the PV array and ground. This repository holds the data behind a study of how the **switching frequency interacts with the common-mode resonance** formed by the output-filter inductance and the parasitic capacitance (150 nF), for four cases: H4 and HERIC, each with unipolar and bipolar SPWM, swept from 1 to 40 kHz.
-
-> Replace `XXXXXXX` in the badge above and in the files listed in `docs/PUBLISHING_STEPS.md` once Zenodo has issued the DOI.
 
 ## Repository layout
 
@@ -16,13 +14,13 @@ Transformerless single-phase PV inverters have no galvanic isolation, so the swi
 | `data/all_cases_combined.csv` | The four manuscript cases in one long table |
 | `data/raw/` | Original Excel workbooks with the simulation settings recorded in each sheet |
 | `data/README.md` | Data dictionary, units, per-case parameters, known gaps |
-| `models/` | MATLAB/Simulink models (H4 bipolar). See `models/README.md` |
-| `scripts/build_csv.py` | Raw workbook -> CSV (unit conversion Hz->kHz, A->mA) |
+| `models/` | MATLAB/Simulink models. See `models/README.md` |
+| `scripts/build_csv.py` | Raw workbook -> CSV (unit conversion Hz -> kHz, A -> mA) |
 | `scripts/analyze_resonance.py` | Predicted f_res = 1/(2π√(L_eq·C_pv)), peak detection, deviation table, 300 mA check |
 | `scripts/plot_sweeps.py` | Redraws leakage / efficiency / THD versus switching frequency |
 | `results/` | Output of the scripts (resonance table and sweep plots) |
 | `manuscript/` | LaTeX source of the paper (preprint; see licence note) |
-| `docs/` | Data availability statement, Zenodo/GitHub publishing steps, reproducibility notes |
+| `docs/` | Data availability statement, Zenodo/GitHub publishing steps |
 
 ## Cases and parameters
 
@@ -38,8 +36,8 @@ Common to all cases: DC-link 0.94 F with 0.049 Ω series resistance, continuous 
 ## Quick start
 
 ```bash
-git clone https://github.com/<your-username>/h4-heric-leakage-current-resonance.git
-cd h4-heric-leakage-current-resonance
+git clone https://github.com/rkrazowan/H4-heric-leakage-current-resonance.git
+cd H4-heric-leakage-current-resonance
 pip install -r requirements.txt
 python scripts/build_csv.py          # regenerate data/*.csv from data/raw/
 python scripts/analyze_resonance.py  # writes results/resonance_table.csv
@@ -47,6 +45,10 @@ python scripts/plot_sweeps.py        # writes results/sweep_*.png
 ```
 
 To rerun a simulation, open a model from `models/` in MATLAB/Simulink with Simscape Electrical, set the carrier frequency, run, and read the RMS current through the 150 nF capacitor. Details are in `models/README.md`.
+
+## Data availability
+
+All data, models and scripts supporting the article are archived on Zenodo: https://doi.org/10.5281/zenodo.23790672
 
 ## Licence
 
@@ -56,7 +58,17 @@ To rerun a simulation, open a model from `models/` in MATLAB/Simulink with Simsc
 
 ## How to cite
 
-Cite the Zenodo record (DOI above) and, once published, the journal article. See `CITATION.cff`.
+Please cite the Zenodo record and, once published, the journal article. See `CITATION.cff`.
+
+```bibtex
+@dataset{kabir_h4_heric_leakage,
+  author    = {Kabir, Razowan and Raju, Mridha and Khatun, Mursida and Mondal, Pantho and Khan, Tanzim and Islam, Rabiul and Islam, A.T.M. Saiful},
+  title     = {Data, Simulink models and scripts for switching-frequency-dependent leakage current in H4 and HERIC transformerless PV inverters},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23790672}
+}
+```
 
 ## Authors
 
