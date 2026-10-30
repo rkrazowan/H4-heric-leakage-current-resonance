@@ -1,0 +1,17 @@
+%% Appendix A: Derivation of the CM model
+\section{Derivation of the CM Model}
+\label{app:cm}
+Consider the circuit of Fig.~\ref{fig:schematic} with $L_1=L_2=L$. Let $v_{QN}$ be the potential of the grounded node Q with respect to the negative DC rail $N$. Let $i_A$ be the current flowing from node A through $L_1$ and $R_L$ to Q, and $i_B$ the current flowing from node B through $L_2$ to Q. Kirchhoff's voltage law gives, for the two branches,
+\begin{align}
+v_{AN}-v_{QN}&=L\frac{di_A}{dt}+v_o, \label{eq:kvl1}\\
+v_{BN}-v_{QN}&=L\frac{di_B}{dt}, \label{eq:kvl2}
+\end{align}
+where $v_o=R_Li_A$ is the load voltage (P with respect to Q). Adding \eqref{eq:kvl1} and \eqref{eq:kvl2} and using $\vCM=(v_{AN}+v_{BN})/2$,
+\begin{equation}
+2\vCM-v_o-2v_{QN}=L\frac{d(i_A+i_B)}{dt}.
+\end{equation}
+The sum $\iCM=i_A+i_B$ leaves node Q through the ground and returns to $N$ through $\Cpv$, so that $v_{QN}=\frac{1}{\Cpv}\int\iCM\,dt$. Therefore
+\begin{equation}
+\vCM-\frac{v_o}{2}=\frac{L}{2}\frac{d\iCM}{dt}+\frac{1}{\Cpv}\int\iCM\,dt,
+\end{equation}
+which is the series connection of $\Leq=L/2$ and $\Cpv$ driven by $e(t)=\vCM-v_o/2$. Taking the Laplace transform gives \eqref{eq:icm}. No assumption on $R_L$ has been made: the load enters only through $v_o$. In a grid-connected inverter the grounded neutral and the grid voltage play the roles of node Q and $v_o$, with the grid impedance neglected. The derivation is first-order: it neglects the resistance of the loop, the inductance and resistance of the ground path, and the switch output capacitances.

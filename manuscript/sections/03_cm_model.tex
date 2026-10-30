@@ -1,0 +1,103 @@
+%% Section 3: Common-mode model and resonance condition
+\section{Common-Mode Model and Resonance Condition}
+\label{sec:cm}
+Fig.~\ref{fig:schematic} shows the generic power stage used in this study: a DC source with a DC-link capacitor, a full bridge, an optional HERIC AC bypass, an L filter, a resistive load across the filter output whose lower terminal is earthed, and the parasitic capacitance $\Cpv$ between the negative DC rail and ground.
+
+\begin{figure}[!t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small,
+  sw/.style={draw,thick,minimum width=9mm,minimum height=7mm,fill=white},
+  bx/.style={draw,thick,minimum width=12mm,minimum height=5mm,fill=white},
+  jn/.style={circle,fill,inner sep=1.3pt}]
+% DC rails
+\draw[thick] (-2.6,5)--(8,5); \draw[thick] (-2.6,-1)--(8,-1);
+\node[circle,draw,thick,minimum size=10mm] (V) at (-2.6,2) {$V_{\mathrm{dc}}$};
+\draw[thick] (V.north)--(-2.6,5); \draw[thick] (V.south)--(-2.6,-1);
+% DC-link capacitor
+\draw[thick] (-1.3,5)--(-1.3,2.2); \draw[very thick] (-1.55,2.2)--(-1.05,2.2);
+\draw[very thick] (-1.55,1.8)--(-1.05,1.8); \draw[thick] (-1.3,1.8)--(-1.3,-1);
+\node[jn] at (-1.3,5) {}; \node[jn] at (-1.3,-1) {};
+\node at (-0.8,2.0) {$C_{\mathrm{dc}}$};
+% legs
+\node[sw] at (0,4.0) {$S_1$}; \node[sw] at (0,0.0) {$S_3$};
+\node[sw] at (8,4.0) {$S_2$}; \node[sw] at (8,0.0) {$S_4$};
+\draw[thick] (0,5)--(0,4.35); \draw[thick] (0,3.65)--(0,0.35); \draw[thick] (0,-0.35)--(0,-1);
+\draw[thick] (8,5)--(8,4.35); \draw[thick] (8,3.65)--(8,0.35); \draw[thick] (8,-0.35)--(8,-1);
+\node[jn] at (0,5) {}; \node[jn] at (0,-1) {}; \node[jn] at (8,5) {}; \node[jn] at (8,-1) {};
+% filter: A - L1 - P ; B - L2 - Q ; R_L between P and Q ; Q grounded
+\node[jn] (A) at (0,2.3) {}; \node at (-0.35,2.6) {A};
+\node[jn] (B) at (8,1.0) {}; \node at (8.35,1.3) {B};
+\draw[thick] (A)--(1.4,2.3); \node[bx] at (2.0,2.3) {$L_1$}; \draw[thick] (2.6,2.3)--(4,2.3);
+\node[jn] (P) at (4,2.3) {}; \node at (3.7,2.6) {P};
+\draw[thick] (B)--(6.3,1.0); \node[bx] at (5.7,1.0) {$L_2$}; \draw[thick] (5.1,1.0)--(4,1.0);
+\node[jn] (Q) at (4,1.0) {}; \node at (3.7,0.7) {Q};
+\draw[thick] (4,2.3)--(4,2.0); \node[draw,thick,minimum width=5mm,minimum height=9mm,fill=white,font=\small] at (4,1.65) {\rotatebox{90}{$R_L$}};
+\draw[thick] (4,1.3)--(4,1.0);
+% HERIC bypass
+\node[jn] at (0.7,2.3) {}; \node[jn] at (7.3,1.0) {};
+\node[sw] (S5) at (2.2,3.2) {$S_5$}; \node[sw] (S6) at (5.0,3.2) {$S_6$};
+\draw[thick] (0.7,2.3)--(0.7,3.2)--(S5.west); \draw[thick] (S5.east)--(S6.west);
+\draw[thick] (S6.east)--(7.3,3.2)--(7.3,1.0);
+\draw[dashed,rounded corners=3pt,gray] (1.5,2.8) rectangle (5.9,3.7);
+\node[gray,font=\scriptsize] at (3.7,3.95) {HERIC AC bypass (omitted for H4)};
+% parasitic capacitance, ground
+\draw[thick] (4,1.0)--(4,-2.3);
+\draw[thick] (-1.3,-1)--(-1.3,-1.45); \draw[very thick] (-1.55,-1.45)--(-1.05,-1.45);
+\draw[very thick] (-1.55,-1.75)--(-1.05,-1.75); \draw[thick] (-1.3,-1.75)--(-1.3,-2.3);
+\node at (-0.65,-1.6) {$C_{\mathrm{PV}}$};
+\draw[thick] (-1.3,-2.3)--(4,-2.3); \node[jn] at (4,-2.3) {};
+\draw[thick] (3.6,-2.3)--(4.4,-2.3); \draw[thick] (3.75,-2.45)--(4.25,-2.45); \draw[thick] (3.9,-2.6)--(4.1,-2.6);
+\draw[-{Latex[length=2.5mm]},thick,red] (-1.75,-1.2) .. controls (-2.0,-2.0) .. (-1.75,-2.5);
+\node[red] at (-2.45,-1.85) {$i_{\mathrm{CM}}$};
+\node at (-1.9,5.3) {$P_{dc}$}; \node at (-1.9,-1.3) {$N$};
+\end{tikzpicture}}
+\caption{Power stage used in the study. The bridge ($S_1$--$S_4$, each with an anti-parallel diode) feeds two filter inductors $L_1$, $L_2$ and a resistive load $R_L$ connected between P and Q; node Q (the load's lower terminal) is grounded. The HERIC variant adds the AC bypass $S_5$, $S_6$ between nodes A and B. $\Cpv$ is the parasitic capacitance between the negative DC rail $N$ and ground; the leakage current $\iCM$ closes through $\Cpv$.}
+\label{fig:schematic}
+\end{figure}
+
+\subsection{Pole voltages, CMV and differential-mode voltage}
+Let $v_{AN}$ and $v_{BN}$ be the pole voltages of the two bridge legs with respect to the negative DC rail $N$. The CMV and the differential-mode voltage (DMV) are
+\begin{equation}
+\vCM=\frac{v_{AN}+v_{BN}}{2},\qquad \vDM=v_{AN}-v_{BN}.
+\label{eq:cmdm}
+\end{equation}
+The DMV is the voltage that produces the load current; the CMV is the average of the two poles. With the load's lower terminal grounded (the role played by the grid neutral in a grid-connected system) and $L_1=L_2$, the voltage that actually drives the PV-to-ground loop is not $\vCM$ alone. Applying Kirchhoff's voltage law to the two filter branches (Appendix~\ref{app:cm}) gives the effective CM source
+\begin{equation}
+e(t)=\vCM(t)-\frac{v_o(t)}{2},
+\label{eq:tcm}
+\end{equation}
+where $v_o$ is the voltage across the load. The second term is a line-frequency component of amplitude equal to half the output-voltage amplitude; it is present for every H-bridge variant, however ideal its $\vCM$. For unequal inductances, the general form $v_{tCM}=\vCM+\tfrac{\vDM}{2}\tfrac{L_2-L_1}{L_1+L_2}$ applies when the ground reference is at the midpoint of the DM path \cite{Gubia2007,Shrestha2025}.
+
+\subsection{Equivalent CM circuit and resonance}
+The CM current returns through the two filter branches in parallel (via $L_2$ directly and via $R_L$ and $L_1$) and closes through $\Cpv$. The equivalent CM circuit is therefore the series connection of $\Leq=L_1L_2/(L_1+L_2)=L/2$ and $\Cpv$ driven by $e(t)$ (Fig.~\ref{fig:cmcircuit}; the load resistance is already accounted for by the term $v_o/2$ in \eqref{eq:tcm}, and resistive loss in the loop is neglected). The CM current is then
+\begin{align}
+\iCM(s)&=\frac{e(s)}{s\Leq+1/(s\Cpv)},\label{eq:icm}\\
+\fres&=\frac{1}{2\pi\sqrt{\Leq\Cpv}}.\label{eq:fres}
+\end{align}
+Two regimes follow. If $\vCM$ is constant and $v_o$ is a pure sinusoid, $e(t)$ contains only a 50-Hz component, and the leakage is the small displacement current of that component, which is capacitive well below $\fres$:
+\begin{equation}
+I_{\mathrm{floor}}\approx\frac{\omega_g\,\Cpv\,V_{o,pk}}{2\sqrt{2}},\qquad \omega_g=2\pi\cdot 50~\mathrm{rad/s},
+\label{eq:floor}
+\end{equation}
+where $V_{o,pk}$ is the amplitude of the fundamental output voltage. If $\vCM$ contains components at the carrier frequency or its multiples, the corresponding leakage components are amplified by $1/|\omega\Leq-1/(\omega\Cpv)|$, which has a pole at $\fres$. In a switched converter, $\vCM$ contains components at $k\fsw$ whenever it is not perfectly constant, so leakage peaks are expected when $k\fsw\approx\fres$ for integer $k$ (with weight decreasing with $k$). A peak at $\fsw\approx2\fres$ is not predicted by this mechanism, because it would require sub-harmonic content at $\fsw/2$ in $e(t)$; one such peak appears in the H4 bipolar sweep (Section~\ref{sec:results}) and is treated as an empirical feature. Well above resonance the loop is inductive and the leakage decreases as $1/f$.
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}[font=\small]
+\node[circle,draw,thick,minimum size=10mm] (V) at (0,0) {$e(t)$};
+\draw[thick] (V.north)--(0,0.95)--(1.6,0.95);
+\node[draw,thick,minimum width=12mm,minimum height=5mm,fill=white] (L) at (2.2,0.95) {$\Leq$};
+\draw[thick] (L.east)--(3.6,0.95)--(3.6,0.35);
+\draw[very thick] (3.35,0.35)--(3.85,0.35); \draw[very thick] (3.35,0.05)--(3.85,0.05);
+\draw[thick] (3.6,0.05)--(3.6,-0.95)--(0,-0.95)--(V.south);
+\node at (4.3,0.2) {$\Cpv$};
+\draw[-{Latex[length=2.2mm]},thick,red] (0.6,1.25)--(1.5,1.25);
+\node[red] at (1.05,1.5) {$\iCM$};
+\end{tikzpicture}
+\caption{First-order CM equivalent circuit. $e(t)=\vCM-v_o/2$ is the effective CM source, $\Leq=L_1L_2/(L_1+L_2)$ is the parallel combination of the filter inductances and $\Cpv$ is the PV-to-ground parasitic capacitance.}
+\label{fig:cmcircuit}
+\end{figure}
+
+\subsection{Safety limits}
+The leakage current is limited by VDE~V~0126-1-1 and IEC~62109-2: for inverters up to 30~kVA the inverter must disconnect within 0.3~s if the continuous residual current exceeds 300~mA, and within 300~ms, 150~ms and 40~ms for sudden changes of 30~mA, 60~mA and 150~mA, respectively \cite{VDE0126,IEC62109}. In this paper the RMS leakage current is compared against the 300~mA continuous limit; the sudden-change limits require a time-domain evaluation with a control-and-protection model that is outside the scope of this study.

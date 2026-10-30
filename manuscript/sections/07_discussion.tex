@@ -1,0 +1,37 @@
+%% Section 7: Discussion
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the sweeps show}
+The three mechanisms identified in the preceding sections can be separated by their dependence on the switching frequency. The first is the \emph{line-frequency floor} \eqref{eq:floor}, which is independent of $\fsw$ and of the topology, and which scales with $\Cpv$ and with the output voltage; it sets a lower bound of a few milliamperes for a 150-nF array (Table~\ref{tab:floor}). The second is the \emph{carrier-frequency component} of $\vCM$, which exists for H4 with unipolar SPWM by construction and for the imperfectly decoupled HERIC case in the simulation; it adds to the floor and falls with $1/f$ above resonance. The third is the \emph{resonance}, which multiplies whichever carrier-frequency content exists when $k\fsw\approx\fres$. The distinction is useful because only the third can be removed without changing the topology or the modulation, simply by choosing $\fsw$ and the filter inductance.
+
+\subsection{Relation to topology-centered studies}
+Reviews and comparisons of transformerless topologies conclude that decoupling or clamping the common-mode voltage reduces leakage relative to a conventional H4 inverter with unipolar modulation \cite{Li2015,Khan2020,Kolodziejski2023}, and comparative simulations are usually reported at a fixed switching frequency \cite{Kibria2023,Shrestha2025}. The present results do not contradict this: in the HERIC bipolar case the leakage floor is 3.5~mA, lower than any other case. However, they indicate that the leakage observed for a given topology at a fixed $\fsw$ depends on where that $\fsw$ lies relative to the CM resonance of the particular filter and parasitic capacitance. A fixed-frequency comparison can therefore overstate or understate the difference between topologies by one to two orders of magnitude (Figs.~\ref{fig:sweepH4U}--\ref{fig:sweepHB}), which is one more reason to compare topologies with identical filters and over a frequency range. The conclusion of \cite{Shrestha2025} that H5 gives the best balance between leakage, THD and efficiency is not tested here because H5 was not simulated.
+
+\subsection{Trade-offs for the HERIC bipolar variant}
+The bipolar HERIC configuration trades a very low leakage current for a poor low-order waveform quality: its 9.1\% THD is above the few-percent distortion levels typically applied to grid-connected equipment \cite{IEEE519,IEEE1547}, and the observed kinks at the zero crossings are compatible with a mismatch between the bridge modulation and the bypass gating. This variant is not recommended in the present form. Two routes are worth investigating: re-synchronizing the bypass gating with the zero crossing of the reference, and using the conventional unipolar HERIC modulation with a filter and gating that suppress the residual carrier-frequency CMV. In the unipolar case, the leakage of 40~mA at 26~kHz and the sensitivity to resonance suggest that attention to the switch parasitics and to the timing of the bypass transitions would be rewarded.
+
+\subsection{Compliance with the leakage limits}
+Table~\ref{tab:limits} summarizes the leakage-current limits of IEC~62109-2 for transformerless inverters up to 30~kVA, as quoted in manufacturer documentation of the standard, together with the compliance of the simulated cases. Only the continuous limit can be checked from RMS sweeps. In all four cases the continuous limit of 300~mA is exceeded only in a narrow band around the resonance (H4 unipolar: at 2~kHz; H4 bipolar: near 2 and 12~kHz; HERIC unipolar: at 5--8~kHz); HERIC bipolar never exceeds it. The avoidance bands of Section~\ref{sec:design} indicate that, in these cases, the resonance can be avoided at the design stage by an appropriate choice of $\fsw$, provided that $\Cpv$ is known to within a factor of about two; the price is paid in efficiency at the upper end of the range, which is not captured by the present loss model.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Residual-current limits for transformerless inverters up to 30~kVA (as summarized from IEC 62109-2 manufacturer documentation) and simulated compliance}
+\label{tab:limits}
+\centering
+\footnotesize
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{p{3.6cm}p{4.3cm}}
+\toprule
+Condition & Requirement \\
+\midrule
+Continuous residual current $>300$~mA & Disconnect within 0.3~s \\
+Sudden change of 30~mA & Disconnect within 300~ms \\
+Sudden change of 60~mA & Disconnect within 150~ms \\
+Sudden change of 150~mA & Disconnect within 40~ms \\
+\midrule
+Simulated RMS leakage $>300$~mA & H4 uni.: near 2~kHz; H4 bi.: near 2, 12~kHz; HERIC uni.: 5--8~kHz; HERIC bi.: never \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

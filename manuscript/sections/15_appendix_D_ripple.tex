@@ -1,0 +1,12 @@
+%% Appendix D: Ripple-current bound
+\section{Ripple-Current Bound}
+\label{app:ripple}
+For a bridge leg with duty cycle $D(t)=m_a\sin(\omega t)$ and a DC input $\Vdc$, the average leg voltage is $V_o=\Vdc D$. During the on-interval $DT_s$ the inductor voltage is $\Vdc-V_o$, so \eqref{eq:ripple} follows from $v_L=L\,di/dt$ with $\Delta i=\Delta I_{pp}$ and $dt=DT_s$. Substituting $V_o=\Vdc D$,
+\begin{equation}
+\Delta I_{pp}=\frac{\Vdc T_s}{L}D(1-D).
+\end{equation}
+The product $D(1-D)$ is maximal at $D=1/2$, where it equals $1/4$, so that
+\begin{equation}
+\Delta I_{pp,\max}=\frac{\Vdc}{4\fsw L},\qquad L\geq\frac{\Vdc}{4\fsw\,\Delta I_{pp,\max}}.
+\end{equation}
+For the H4 bipolar case ($\Vdc=460$~V, $L=10$~mH) this gives 11.5~A at 1~kHz and 0.29~A at 40~kHz, compared with a load-current amplitude of about 38~A, which accounts for the large low-frequency THD of Fig.~\ref{fig:sweepH4B}.

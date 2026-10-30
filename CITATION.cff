@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this dataset or the models, please cite it as below."
+title: "Data, Simulink models and scripts for switching-frequency-dependent leakage current in H4 and HERIC transformerless PV inverters"
+type: dataset
+version: "1.0.0"
+date-released: "2026-10-30"
+license: CC-BY-4.0
+# doi: 10.5281/zenodo.XXXXXXX   # add after the Zenodo release
+repository-code: "https://github.com/<your-username>/h4-heric-leakage-current-resonance"
+keywords: [transformerless inverter, H4, HERIC, leakage current, common-mode resonance, photovoltaic, Simulink]
+authors:
+  - family-names: Kabir
+    given-names: Razowan
+    orcid: "https://orcid.org/0009-0008-6274-8117"
+    email: rkrazowan@gmail.com
+    affiliation: "Khulna University of Engineering and Technology"
+  - family-names: Raju
+    given-names: Mridha
+    affiliation: "Khulna University of Engineering and Technology"
+  - family-names: Khatun
+    given-names: Mursida
+    affiliation: "Gopalganj Science and Technology University"
+  - family-names: Mondal
+    given-names: Pantho
+    affiliation: "Gopalganj Science and Technology University"
+  - family-names: Khan
+    given-names: Tanzim
+    affiliation: "Gopalganj Science and Technology University"
+  - family-names: Islam
+    given-names: Rabiul
+    affiliation: "Gopalganj Science and Technology University"
+  - family-names: Islam
+    given-names: A.T.M. Saiful
+    affiliation: "Gopalganj Science and Technology University"

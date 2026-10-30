@@ -1,0 +1,15 @@
+%% Section 9: Limitations
+\section{Limitations}
+\label{sec:limits}
+The following limitations qualify the results.
+\begin{enumerate}
+  \item \emph{Simulation only.} No hardware validation is provided. The model is a resistive-load, open-loop model with a grounded load terminal and without a grid source, current controller or phase-locked loop; real systems include grid impedance and control, which change both the CM loop impedance and the modulation.
+  \item \emph{Non-uniform parameters.} $\Vdc$, $L$ and $R_L$ differ between the H4 and HERIC cases, so a topology ranking is not supported (the cross-topology comparison above).
+  \item \emph{Parasitic model.} The parasitic capacitance is a single 150~nF lumped capacitor; the resistive and inductive elements of the ground path, the switch output capacitances and dead time are not modeled, and these set the damping and the magnitude of the resonant peaks. The simulated peaks of several amperes are therefore an upper bound that highlights the resonance mechanism rather than a prediction of the magnitudes in a real system.
+  \item \emph{Efficiency.} The efficiency does not include a complete switching-loss, core-loss or thermal model. The flat efficiency of the HERIC unipolar case indicates that the frequency dependence of switching loss is not captured. The efficiency values should be read as relative, conduction-dominated indicators.
+  \item \emph{THD.} The THD is limited to harmonic orders up to 40 (2~kHz) and excludes the switching band; observation windows of 2--5 cycles include the residual start-up transient in some cases.
+  \item \emph{HERIC bipolar.} The modulation used is not the conventional HERIC scheme, and the origin of its 9\% THD has been inferred, but not confirmed, from the waveforms.
+  \item \emph{Filter sizing.} The series reactance of the filter is a large fraction of the load resistance (0.6--1.1, Table~\ref{tab:params}), so the inductances are larger than a 10\%-voltage-drop design would give. The magnitude of $\fres$, and hence the location of the leakage peaks, depends on this choice.
+  \item \emph{Unexplained features.} The minor leakage peak of the H4 bipolar case at 5~kHz lies 14\% below the predicted resonance, and the 12-kHz peak lies at $2\fres$, where the carrier-harmonic mechanism predicts no peak; neither is explained by the first-order model. The $2.4\fres$ margin of the selection rule rests on this single observation.
+  \item \emph{Sweep resolution.} The frequency step (0.5--1~kHz) limits the localization of the resonant peaks to about $\pm0.5$~kHz.
+\end{enumerate}

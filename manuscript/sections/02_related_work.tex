@@ -1,0 +1,42 @@
+%% Section 2: Related work and positioning
+\section{Related Work and Positioning}
+\label{sec:related}
+
+\subsection{Topologies for leakage-current suppression}
+Early transformerless designs were based on the full-bridge (H4) inverter and its modulation variants \cite{Kjaer2005,Gonzalez2007}. With bipolar SPWM, the H4 CMV is ideally constant but the output is two-level, which increases the ripple and the filter requirement; with unipolar SPWM the output is three-level and more efficient, but the CMV switches at the carrier frequency \cite{Gonzalez2007,Gubia2007}. The H5 inverter adds a switch on the DC side so that the AC side is disconnected from the PV array during freewheeling \cite{Victor2008}; the HERIC inverter achieves the same decoupling with two switches on the AC side \cite{Schmidt2003}. The H6 family adds a second DC-side switch or a clamping network \cite{Zhang2014,Yu2011,Islam2015}. Mid-point-clamped bridges \cite{Kerekes2011}, common-ground structures \cite{Salem2021}, multilevel inverters \cite{Gonzalez2008} and further derivations \cite{Xiao2011} extend the family. Comprehensive topology reviews and derivation methodologies are given in \cite{Li2015,Khan2020,Kibria2023,Kolodziejski2023}.
+
+\subsection{Modelling of leakage currents}
+Equivalent CM circuits that include the parasitic capacitance, the filter inductances and the grid or ground impedance explain the main features of the leakage current \cite{Gubia2007,Lopez2007,Lopez2010}. More detailed parasitic-capacitor models improve the prediction of the leakage current \cite{Chen2016}, and the CM behavior of DC-decoupled and AC-decoupled topologies has been compared in \cite{Sundar2016}. A common conclusion is that leakage is governed by the magnitude and the spectral content of the total CMV and by the resonant impedance of the loop; the form of the CM transfer function used in this paper follows that of \cite{Gubia2007} and \cite{Shrestha2025}, with the source term adapted to the grounded-load circuit simulated here.
+
+\subsection{Comparative studies and the gap addressed here}
+Table~\ref{tab:related} summarizes recent comparative studies that are closest to the present work. Reference~\cite{Khan2020} compares major topologies analytically and by PLECS simulation, with cost, size, efficiency and thermal analysis; \cite{Kibria2023} simulates eighteen topologies with common parameters and reports the loss distribution; \cite{Kolodziejski2023} compares H4, H5, H6 and HERIC implemented with the same IGBTs in PSPICE; and \cite{Shrestha2025} compares H4, H5 and HERIC in MATLAB/\-Simulink and concludes that H5 offers the best balance between leakage current, THD and efficiency. These studies are primarily topology-centric. To the best of the authors' knowledge, and on the basis of the studies reviewed here, the explicit dependence of the leakage current on the \emph{switching frequency}, and the relation of leakage peaks to the CM resonance of the filter and the parasitic capacitance, receive less systematic attention. This is the gap that the present paper addresses, for the H4 and HERIC inverters under unipolar and bipolar SPWM. A systematic search for frequency-sweep studies should accompany the final submission (see the notes accompanying this manuscript).
+
+\begin{table*}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Closest comparative studies and the position of this work}
+\label{tab:related}
+\centering
+\footnotesize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{p{1.4cm}p{3.0cm}p{2.6cm}p{6.2cm}}
+\toprule
+Ref. & Topologies & Tool & Main conclusion / focus \\
+\midrule
+\cite{Li2015} & Derivation and review of leakage-suppressing topologies & Review & Systematic derivation methodology \\
+\cite{Khan2020} & Major single-phase transformerless topologies & Analysis, PLECS & CM behavior, cost, size, efficiency, thermal analysis, roadmap \\
+\cite{Kibria2023} & Eighteen topologies & MATLAB/\-Simulink & Common parameters, IGBT switches, loss distribution per switch \\
+\cite{Kolodziejski2023} & H4, H5, H6, HERIC & PSPICE & Same components and parameters; efficiency and leakage \\
+\cite{Shrestha2025} & H4, H5, HERIC & MATLAB/\-Simulink & H5 gives best balance of leakage, THD and efficiency \\
+This work & H4 and HERIC, unipolar and bipolar SPWM & MATLAB/\-Simulink & Frequency sweep 1--40~kHz; CM-resonance interpretation; frequency-selection rule \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}
+
+\subsection{Filters, modulation and standards}
+The output filter shapes both the grid-current quality and the CM path. LCL filters give higher harmonic attenuation than L filters at the same inductance and are the usual choice for grid-connected inverters, and systematic design procedures exist \cite{Reznik2014}; in a transformerless inverter, however, the shunt capacitance of an LC or LCL filter, when referred to the grounded neutral, adds a high-frequency CM path, which is why the L filter is attractive for leakage studies. Unipolar modulation reduces the ripple seen by the filter relative to bipolar modulation \cite{Gonzalez2007,Salem2021}, which is the reason for its higher efficiency, and the topologies that preserve this advantage while keeping $\vCM$ constant are the main subject of the topology literature above.
+
+The applicable standards combine safety and power-quality requirements. The leakage current is regulated by VDE~V~0126-1-1 and IEC~62109-2 \cite{VDE0126,IEC62109}; the comparative review \cite{Khan2020} lists IEEE~1547.1, VDE~0126-1-1, EN~50106, IEC~61727 and AS/NZS~5033 as the standards that transformerless inverters must comply with in different regions. The harmonic distortion at the point of connection is governed by IEEE~1547 and IEEE~519 \cite{IEEE1547,IEEE519}. The present study addresses the first group directly and the second only through a low-order THD.
+
+\subsection{Problem statement}
+Let a transformerless inverter with topology $\mathcal{T}$ and modulation $\mathcal{M}$ feed a load through an L filter of inductance $L$ in the presence of a parasitic capacitance $\Cpv$. For a given operating point, let $I_{\mathrm{leak}}(\fsw)$, $\eta(\fsw)$ and $\mathrm{THD}(\fsw)$ denote the RMS leakage current, the efficiency and the low-order THD. The question addressed is the following: for which switching frequencies does $I_{\mathrm{leak}}(\fsw)$ fall below the limit of 300~mA with margin, how does this set depend on $(\mathcal{T},\mathcal{M})$, and can its complement (the frequencies to be avoided) be predicted from $L$ and $\Cpv$ alone? The scope is deliberately restricted to the inverter stage and its CM path; control loops, MPPT and grid-impedance effects are excluded.

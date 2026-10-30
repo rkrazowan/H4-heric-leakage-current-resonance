@@ -1,0 +1,31 @@
+%% Appendix C: Reproducibility data
+\section{Reproducibility Data}
+\label{app:repro}
+Table~\ref{tab:repro} collects the settings that are needed to reproduce the sweeps. Solver and block-parameter details not recorded in the simulation notes are marked for completion.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Simulation settings}
+\label{tab:repro}
+\centering
+\footnotesize
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{p{3.0cm}p{4.9cm}}
+\toprule
+Item & Value \\
+\midrule
+Software & MATLAB/Simulink, Simscape Electrical (Powergui, continuous) \\
+MATLAB releases used & R2025b and R2018a (\todo{state which case used which release}) \\
+Grid frequency & 50~Hz \\
+Carrier & Triangular, unit amplitude, frequency swept \\
+Parasitic capacitance & 150~nF between negative DC rail and ground \\
+Stop time & 0.08~s (H4); 0.05~s (HERIC) \\
+FFT & Powergui FFT tool, fundamental 50~Hz, up to 40th order \\
+FFT window & 1--4 cycles (see figures) \\
+Max step size / tolerances & \todo{fill in from model} \\
+Switch parameters ($R_{on}$, $V_f$, snubbers) & \todo{fill in from model} \\
+Dead time & \todo{fill in (none assumed in text)} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

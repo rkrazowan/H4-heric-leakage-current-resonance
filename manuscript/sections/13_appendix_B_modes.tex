@@ -1,0 +1,31 @@
+%% Appendix B: Operating modes and switching states
+\section{Operating Modes and Switching States}
+\label{app:modes}
+Table~\ref{tab:modes} lists the ideal operating modes of the configurations, with the pole voltages, the resulting $\vCM$ and $\vDM$ according to \eqref{eq:cmdm}, and the conducting devices. For the H4 inverter with unipolar SPWM, modes~2 and~4 connect both output nodes to the same rail, so that $\vCM$ takes the values $\Vdc$ and $0$ in the two freewheeling states while taking $\Vdc/2$ in the active states. This variation of $\vCM$ at the carrier frequency is the source of the leakage current of the H4 unipolar case. In the HERIC inverter the freewheeling current circulates through the AC bypass, the bridge switches are all off, and the PV side is disconnected, so that the ideal $\vCM$ remains at $\Vdc/2$.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.2}
+\caption{Ideal operating modes ($V_{dc}$-normalized)}
+\label{tab:modes}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{llcccc}
+\toprule
+Topology / mode & Conducting devices & $v_{AN}$ & $v_{BN}$ & $\vDM$ & $\vCM$ \\
+\midrule
+H4 unip.\ 1 (active $+$) & $S_1,S_4$ & $\Vdc$ & 0 & $\Vdc$ & $\Vdc/2$ \\
+H4 unip.\ 2 (free.\ $+$) & $S_1$, $D_3$ & $\Vdc$ & $\Vdc$ & 0 & $\Vdc$ \\
+H4 unip.\ 3 (active $-$) & $S_2,S_3$ & 0 & $\Vdc$ & $-\Vdc$ & $\Vdc/2$ \\
+H4 unip.\ 4 (free.\ $-$) & $S_2$, $D_4$ & 0 & 0 & 0 & 0 \\
+\midrule
+HERIC 1 (active $+$) & $S_1,S_4$ & $\Vdc$ & 0 & $\Vdc$ & $\Vdc/2$ \\
+HERIC 2 (free.\ $+$) & $S_5$ branch$^{d}$ & \multicolumn{2}{c}{floating} & 0 & $\Vdc/2$ \\
+HERIC 3 (active $-$) & $S_2,S_3$ & 0 & $\Vdc$ & $-\Vdc$ & $\Vdc/2$ \\
+HERIC 4 (free.\ $-$) & $S_6$ branch$^{d}$ & \multicolumn{2}{c}{floating} & 0 & $\Vdc/2$ \\
+\bottomrule
+\multicolumn{6}{p{0.9\columnwidth}}{\footnotesize $^{d}$The thesis labels the bypass for the positive half-cycle as $S_6$ and for the negative half-cycle as $S_5$; \todo{make the labelling of $S_5$/$S_6$ in the text, Fig.~\ref{fig:schematic} and Fig.~\ref{fig:model} consistent with the Simulink model.}}
+\end{tabular}
+\end{adjustbox}
+\end{table}

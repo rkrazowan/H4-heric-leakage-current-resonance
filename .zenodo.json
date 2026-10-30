@@ -1,0 +1,17 @@
+{
+  "title": "Data, Simulink models and scripts for switching-frequency-dependent leakage current in H4 and HERIC transformerless PV inverters",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "description": "<p>Simulink models, switching-frequency sweep data (1-40 kHz) and Python analysis scripts supporting the article <em>Switching-frequency-dependent leakage current in H4 and HERIC transformerless PV inverters: a common-mode resonance perspective</em>. Four cases are covered: H4 and HERIC, each with unipolar and bipolar SPWM, with a 150 nF PV-to-ground parasitic capacitance. Each sweep records RMS leakage current, efficiency and low-order THD versus switching frequency.</p>",
+  "creators": [
+    {"name": "Kabir, Razowan", "affiliation": "Khulna University of Engineering and Technology", "orcid": "0009-0008-6274-8117"},
+    {"name": "Raju, Mridha", "affiliation": "Khulna University of Engineering and Technology"},
+    {"name": "Khatun, Mursida", "affiliation": "Gopalganj Science and Technology University"},
+    {"name": "Mondal, Pantho", "affiliation": "Gopalganj Science and Technology University"},
+    {"name": "Khan, Tanzim", "affiliation": "Gopalganj Science and Technology University"},
+    {"name": "Islam, Rabiul", "affiliation": "Gopalganj Science and Technology University"},
+    {"name": "Islam, A.T.M. Saiful", "affiliation": "Gopalganj Science and Technology University"}
+  ],
+  "keywords": ["transformerless inverter", "H4", "HERIC", "leakage current", "common-mode resonance", "photovoltaic", "Simulink", "switching frequency"]
+}

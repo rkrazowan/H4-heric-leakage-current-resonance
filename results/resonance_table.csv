@@ -1,0 +1,8 @@
+case,f_res_kHz,peak_kHz,peak_mA,nearest,f_pred_kHz,deviation_pct
+h4_unipolar,1.94,1.0,280.0,f_res/2,0.97,3.2
+h4_unipolar,1.94,2.0,760.0,f_res,1.94,3.2
+h4_bipolar,5.81,2.0,503.0,f_res/3,1.94,3.2
+h4_bipolar,5.81,5.0,166.6,f_res,5.81,14.0
+h4_bipolar,5.81,25.0,118.2,2 f_res,11.62,115.1
+heric_unipolar,5.81,6.0,3987.0,f_res,5.81,3.2
+heric_bipolar,5.81,5.5,14.87,f_res,5.81,5.4

@@ -1,0 +1,17 @@
+*.asv
+*.autosave
+slprj/
+*.slxc
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+manuscript/*.pdf

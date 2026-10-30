@@ -1,0 +1,90 @@
+%% =====================================================================
+%%  Switching-Frequency-Dependent Leakage Current in H4 and HERIC
+%%  Transformerless PV Inverters: A Common-Mode Resonance Perspective
+%%
+%%  Target: IEEE Access (primary).  This file uses stock IEEEtran
+%%  (two-column journal layout) and compiles with any TeX Live.
+%%  For final upload with IEEE's official ieeeaccess.cls use
+%%  main_ieeeaccess_class.tex (same sections/, figures/, references.bib).
+%% =====================================================================
+\documentclass[journal]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+
+%% red marker for items the authors must fill in (delete before submission)
+\newcommand{\todo}[1]{\textcolor{red}{[#1]}}
+\newcommand{\kHz}{\,\text{kHz}}
+\newcommand{\mA}{\,\text{mA}}
+\newcommand{\Vdc}{V_{\mathrm{dc}}}
+\newcommand{\Cpv}{C_{\mathrm{PV}}}
+\newcommand{\Leq}{L_{\mathrm{eq}}}
+\newcommand{\fsw}{f_{\mathrm{sw}}}
+\newcommand{\fres}{f_{\mathrm{res}}}
+\newcommand{\vCM}{v_{\mathrm{CM}}}
+\newcommand{\vDM}{v_{\mathrm{DM}}}
+\newcommand{\iCM}{i_{\mathrm{CM}}}
+\hyphenation{trans-former-less}
+
+\begin{document}
+
+\title{Switching-Frequency-Dependent Leakage Current in H4 and HERIC Transformerless PV Inverters: A Common-Mode Resonance Perspective}
+
+\author{Razowan~Kabir,
+        Mridha~Raju,
+        Mursida~Khatun,
+        Pantho~Mondal,
+        Tanzim~Khan,
+        Rabiul~Islam,
+        and~A.T.M.~Saiful~Islam%
+\thanks{\todo{Funding statement, e.g., ``This work was supported in part by ... under Grant ...'' or ``This research received no external funding.''}}%
+\thanks{R. Kabir and M. Raju are with the Department of Electrical and Electronic Engineering, Khulna University of Engineering and Technology, Khulna, Bangladesh.}%
+\thanks{M. Khatun, P. Mondal, T. Khan, R. Islam and A.T.M. S. Islam are with the Department of Electrical and Electronic Engineering, Gopalganj Science and Technology University, Gopalganj, Bangladesh.}%
+\thanks{Corresponding author: Razowan Kabir (e-mail: rkrazowan@gmail.com; ORCID: 0009-0008-6274-8117).}}
+
+\markboth{IEEE Access}{Kabir \MakeLowercase{\textit{et al.}}: Switching-Frequency-Dependent Leakage Current in H4 and HERIC Inverters}
+
+\maketitle
+
+\begin{abstract}
+Transformerless single-phase inverters raise efficiency in grid-connected photovoltaic systems, but the missing galvanic isolation lets the switching common-mode voltage drive a leakage current through the parasitic capacitance between the photovoltaic array and ground. Safety standards require this current to stay below 300 mA. Most topology comparisons use a single switching frequency. This paper instead studies how the switching frequency interacts with the common-mode resonance formed by the output-filter inductance and the parasitic capacitance. Simulation models of the H4 inverter and the highly efficient and reliable inverter concept (HERIC), each with unipolar and bipolar sinusoidal pulse-width modulation, an inductive filter and a 150 nF parasitic capacitance, are swept from 1 kHz to 40 kHz while leakage current, efficiency and low-order harmonic distortion are recorded. In all four cases the leakage current peaks sharply, reaching about 0.75 A, 0.5 A and 4 A for H4 unipolar, H4 bipolar and HERIC unipolar, at frequencies that, for the dominant peaks, agree within about 5\% with the analytically predicted resonance, its sub-multiples or, in one case, twice its value. Elsewhere the leakage falls to 3.5--40 mA. With identical circuit parameters, bipolar HERIC leaks about eleven times less than unipolar HERIC, but its low-order distortion of about 9.1\% is high. The results are simulation-based and the H4 and HERIC parameter sets differ, so they support a switching-frequency selection rule (avoid the resonance, its sub-multiples and twice its value; prefer frequencies above 2.4 times the resonance) rather than a topology ranking.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Common-mode voltage, H4 inverter, HERIC inverter, leakage current, parasitic capacitance, photovoltaic systems, switching frequency, transformerless inverter.
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_cm_model}
+\input{sections/04_topologies}
+\input{sections/05_methodology}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_design_guidelines}
+\input{sections/09_limitations}
+\input{sections/10_conclusion}
+\input{sections/11_acknowledgment_data}
+
+\appendices
+\input{sections/12_appendix_A_cm_derivation}
+\input{sections/13_appendix_B_modes}
+\input{sections/14_appendix_C_reproducibility}
+\input{sections/15_appendix_D_ripple}
+\input{sections/16_appendix_E_nomenclature}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\input{sections/17_biographies}
+
+\end{document}

@@ -1,0 +1,38 @@
+%% Appendix E: Nomenclature
+\section{Nomenclature}
+\label{app:nom}
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.05}
+\caption{Symbols and abbreviations}
+\label{tab:nom}
+\centering
+\footnotesize
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{p{1.8cm}p{6.0cm}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$\Vdc$ & DC-link (PV) voltage \\
+$C_{dc}$, $R_{dc}$ & DC-link capacitance and DC-source series resistance \\
+$\Cpv$ & Parasitic capacitance between the PV array (negative rail) and ground \\
+$L_1,L_2$, $\Leq$ & Filter inductances and their parallel combination $L_1L_2/(L_1+L_2)$ \\
+$R_L$ & Load resistance \\
+$v_{AN},v_{BN}$ & Pole voltages of the bridge legs with respect to the negative rail $N$ \\
+$\vCM$, $\vDM$ & Common-mode and differential-mode voltage, \eqref{eq:cmdm} \\
+$v_o$ & Load (output) voltage \\
+$e(t)$ & Effective CM source $\vCM-v_o/2$, \eqref{eq:tcm} \\
+$\iCM$ & CM (leakage) current through $\Cpv$ \\
+$\fsw$, $\fres$ & Switching frequency; CM resonance frequency, \eqref{eq:icm} \\
+$I_{\mathrm{floor}}$ & Line-frequency leakage floor, \eqref{eq:floor} \\
+$m_a$ & Modulation index \\
+$\Delta I_{pp}$ & Peak-to-peak inductor current ripple \\
+\midrule
+CM, DM & Common mode, differential mode \\
+CMV, DMV & Common-mode voltage, differential-mode voltage \\
+HERIC & Highly efficient and reliable inverter concept \\
+SPWM & Sinusoidal pulse-width modulation \\
+THD & Total harmonic distortion \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
